@@ -14,6 +14,7 @@ SDL_AppResult DefaultApp::Iterate() {
     Uint64 currentIterationPerfCounter = SDL_GetPerformanceCounter();
     double dt = static_cast<double>(currentIterationPerfCounter - lastIterationPerfCounter) / SDL_GetPerformanceFrequency();
     lastIterationPerfCounter = currentIterationPerfCounter;
+    if (dt > maxDt) dt = maxDt;
 
     if ((appResult = Update(dt)) != SDL_APP_CONTINUE) return appResult;
     if ((appResult = Draw(dt)) != SDL_APP_CONTINUE) return appResult;
