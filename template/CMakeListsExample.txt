@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 4.0)
+
+project(DefaultAppExample)
+
+include(FetchContent)
+FetchContent_Declare(DefaultApp
+    GIT_REPOSITORY https://github.com/stuckedmochi/defaultApp.git
+    GIT_TAG main
+)
+FetchContent_MakeAvailable(DefaultApp)
+
+add_executable(DefaultAppExample
+    ${defaultapp_SOURCE_DIR}/template/main.cpp
+    ${defaultapp_SOURCE_DIR}/template/demoApp.cpp
+)
+target_link_libraries(DefaultAppExample PRIVATE DefaultApp)
